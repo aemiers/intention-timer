@@ -40,22 +40,33 @@ section {
 }
 
 aside {
-  border-left: 1px solid white;
-  padding-left: 40px
+  border-left: 3px solid #46424D;
+  padding-left: 40px;
+  width: 600px;
 }
 
 form {
   height: 57%;
   background-color: #46424D;
   margin-right: 38px;
-  padding: 100px;
+  padding: 70px 134px;
 }
 
 input {
+  width: 367px;
   outline: none;
   background: #46424D;
   border: transparent;
   border-bottom: 2px solid white;
+  margin-bottom: 50px;
+}
+
+button {
+  background-color: #46424D;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 70px;
+  width: 160px;
 }
 
 .main {
@@ -83,9 +94,27 @@ h3 {
 
 p {
   text-align: center;
+  line-height: 1.7;
+  margin-top: 35px;
+}
+/* FORM SECTION */
+.button-container {
+  margin-bottom: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-/* FORM SECTION */
+.go-button {
+  height: 40px;
+  width: 180px;
+  font-size: 17px;
+  background-color: white;
+  color: #46424D;
+  font-weight: normal;
+  float: right;
+}
+
 .category-button {
   /* width="40" height="40" */
 }
@@ -103,4 +132,14 @@ p {
 .category-three:active {
   border-color: #FD8078;
   color: #FD8078;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goal-input {
+  width: 943px;
 }
