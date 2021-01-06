@@ -1,0 +1,106 @@
+/* Main background: #2B2733
+Text on main background: #CBC9CF
+Header, cards: #46424D
+Card shadow: #26222D
+Text on header and cards: #FFF
+Study: #B3FD78
+Meditate: #C278FD
+Exercise: #FD8078
+Error: #EFB7EC */
+
+/* GENERAL */
+ * {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+body, html {
+  margin: 0;
+  background-color: #2B2733;
+  margin-bottom: 50px;
+}
+
+header {
+  background-color: #46424D;
+  color: white;
+  text-align: center;
+  height: 80px;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  position: fixed;
+}
+
+section {
+  width: 1247px;
+  padding-left: 40px;
+}
+
+aside {
+  border-left: 1px solid white;
+  padding-left: 40px
+}
+
+form {
+  height: 57%;
+  background-color: #46424D;
+  margin-right: 38px;
+  padding: 100px;
+}
+
+input {
+  outline: none;
+  background: #46424D;
+  border: transparent;
+  border-bottom: 2px solid white;
+}
+
+.main {
+  display: flex;
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  max-height: 400px;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 25px;
+  letter-spacing: 3px;
+  padding: 26px;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+
+}
+
+p {
+  text-align: center;
+}
+
+/* FORM SECTION */
+.category-button {
+  /* width="40" height="40" */
+}
+
+.category-one:active {
+  border-color, color: #B3FD78;
+  color: #B3FD78;
+}
+
+.category-two:active {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+
+.category-three:active {
+  border-color: #FD8078;
+  color: #FD8078;
+}
