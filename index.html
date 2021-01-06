@@ -10,22 +10,28 @@
   </head>
   <body>
     <main>
-      <section>
+      <section class="activity-form">
         <h2>New Activity</h2>
         <form>
           <h3>Select a category:</h3>
-            <button class="category-button"><img src="icons/study.svg" alt="study button"/>Study</button>
-            <button class="category-button"><img src="icons/meditate.svg"  alt="meditate button">Meditate</button>
-            <button class="category-button"><img src="icons/exercise.svg" alt="exercise button"/>Exercise</button>
+          <div class="button-container">
+            <button class="category-button" id="studyBtn"><img src="icons/study.svg" onclick="icons/study-active.svg"  width="40" height="40" alt="study button"/><br>Study</button>
+            <button class="category-button" id="meditateBtn"><img src="icons/meditate.svg" onclick="icons/meditate-active.svg"  width="40" height="40" alt="meditate button"><br>Meditate</button>
+            <button class="category-button" id="exerciseBtn"><img src="icons/exercise.svg" onclick="icons/exercise-active.svg"  width="40" height="40" alt="exercise button"/><br>Exercise</button>
+          </div>
           <h3>What would you like to accomplish during this time?</h3>
-            <input type="text" name="goal" value="">
+            <input class="task-input" type="number" name="goal" value="">
           <h3>Minutes</h3>
-            <input type="text" name="minutes" value="">
+            <input class="minute-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="minutes" value="">
           <h3>Seconds</h3>
-            <input type="text" name="seconds" value="">
+            <input class="second-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="seconds" value="">
           <button type="button" name="go-button" class="go-button">Start Activity</button>
         </form>
       </section>
+      <!-- <section class="current-activity-form hidden">
+        <h2>Current Activity</h2>
+        <h3>Deep Breathing</h3>
+      </section> -->
       <aside class="aside">
         <h2>Past Activities</h2>
         <p>You haven't logged any activities yet.<br>Complete the form to the left to get started!</p>
