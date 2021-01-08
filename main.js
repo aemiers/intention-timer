@@ -61,7 +61,6 @@ function changeStudyColor() {
   if (event.target.id === "studyBtn") {
     event.target.classList.add("studyBtnActive");
     toggleHidden(studyIconInactive, studyIconActive);
-    // currentActivity.category = 'study';
   }
 }
 
@@ -70,7 +69,6 @@ function changeMeditateColor() {
   if (event.target.id === "meditateBtn") {
     event.target.classList.add("meditateBtnActive");
     toggleHidden(meditateIconInactive, meditateIconActive);
-    // currentActivity.category = 'meditate';
   }
 }
 
@@ -79,16 +77,15 @@ function changeExerciseColor() {
   if (event.target.id === "exerciseBtn") {
     event.target.classList.add("exerciseBtnActive");
     toggleHidden(exerciseIconInactive, exerciseIconActive);
-    // currentActivity.category = 'exercise';
   }
 }
 
 function timerColorizer() {
-  if (studyBtn.classList.includes('studyBtnActive')){
+  if (studyBtn.classList.contains('studyBtnActive')){
     startTimerBtn.classList.add('study');
-  } else if (meditateBtn.classList.includes('meditateBtnActive')) {
+  } else if (meditateBtn.classList.contains('meditateBtnActive')) {
      startTimerBtn.classList.add('meditate');
-  } else if (exerciseBtn.classList.includes('exerciseBtnActive')){
+  } else if (exerciseBtn.classList.contains('exerciseBtnActive')){
      startTimerBtn.classList.add('exercise');
   } else {
     displayError();
