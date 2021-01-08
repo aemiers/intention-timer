@@ -153,6 +153,36 @@ img {
   width: 26%;
 }
 
+/* CURRENT ACTIVITY FORM */
+.current-activity-form {
+  display: flex;
+  justify-content: center;
+}
+
+#time {
+  font-size: 100px;
+}
+
+.study {
+  color: #B3FD78;
+}
+
+.meditate {
+  color: #C278FD;
+}
+
+.exercise {
+  color: #FD8078;
+}
+
+.start-button {
+  font-size: 30px;
+  border-radius: 50%;
+  border: 7px solid;
+  height: 300px;
+  width: 300px;
+}
+
 .hidden {
   display: none !important;
 }
