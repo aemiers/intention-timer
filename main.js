@@ -81,9 +81,11 @@ var pastActivity;
 function addHidden(element) {
   element.classList.add("hidden");
 }
+
 function removeHidden(element) {
   element.classList.remove("hidden");
 }
+
 function timerColorizer() {
   if (studyBtn.classList.includes('studyBtnActive')){
     startTimerBtn.classList.add('study');
@@ -95,6 +97,7 @@ function timerColorizer() {
     displayError();
   }
 }
+
 function createNewActivity() {
   category =
   description = taskInput.value;
@@ -103,6 +106,7 @@ function createNewActivity() {
   completed = false;
   activity = new Activity(category, description, minutes, seconds, completed);
 }
+
 function startActivity() {
   newActivityInput.innerText = taskInput.value;
   createNewActivity()
@@ -111,11 +115,13 @@ function startActivity() {
   showTimer();
   timerColorizer();
 }
+
 function showTimer() {
   // var minutes = parseInt(minuteInput.value) < 10 ? "0" + minutes : minutes;
   // var seconds = parseInt(secondInput.value) < 10 ? "0" + seconds : seconds;
   timerDisplay.innerHTML = `<span id="time">${minuteInput.value}:${secondInput.value}</span><br />`;
 }
+
 function timer(newTime, display) {
     var timer = newTime, minutes, seconds;
     setInterval(function () {
@@ -129,32 +135,10 @@ function timer(newTime, display) {
         }
     }, 1000);
 }
+
 function startTimer() {
   event.preventDefault(event);
     var newTime = (60 * parseInt(minuteInput.value)) + parseInt(secondInput.value);
         display = document.querySelector('#time');
     timer(newTime, display);
 };
-// function timer(duration, display) {
-//     var timer = duration, minutes, seconds;
-//     setInterval(function () {
-//         minutes = parseInt(timer / 60, 10);
-//         seconds = parseInt(timer % 60, 10);
-//
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-//
-//         display.textContent = minutes + ":" + seconds;
-//
-//         if (--timer < 0) {
-//             timer = duration;
-//         }
-//     }, 1000);
-// }
-//
-// function startTimer() {
-//   event.preventDefault(event);
-//     var newTime = 60 * 5,
-//         display = document.querySelector('#time');
-//     timer(newTime, display);
-// };
