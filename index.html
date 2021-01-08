@@ -1,7 +1,8 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.google.com/?query=mont&selection.family=Montserrat:wght@300;400&sidebar.open=true" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <meta charset="utf-8"/>
     <title>Intention Timer</title>
     <header>
@@ -15,23 +16,34 @@
         <form>
           <h3>Select a category:</h3>
           <div class="button-container">
-            <button class="category-button" id="studyBtn"><img src="icons/study.svg" onclick="icons/study-active.svg"  width="40" height="40" alt="study button"/><br>Study</button>
-            <button class="category-button" id="meditateBtn"><img src="icons/meditate.svg" onclick="icons/meditate-active.svg"  width="40" height="40" alt="meditate button"><br>Meditate</button>
-            <button class="category-button" id="exerciseBtn"><img src="icons/exercise.svg" onclick="icons/exercise-active.svg"  width="40" height="40" alt="exercise button"/><br>Exercise</button>
+            <button class="category-button" id="studyBtn" name="category-selection" alt="study button">
+              <img src="icons/study.svg" id="study-icon-inactive" class="studyBtnClassOne">
+              <img src="icons/study-active.svg" id="study-icon-active" class="studyBtnClassTwo hidden">
+            <br>Study</button>
+            <button class="category-button" id="meditateBtn" name="category-selection" alt="meditate button">
+              <img src="icons/meditate.svg" id="meditate-icon-inactive" class="meditateBtnClassOne">
+              <img src="icons/meditate-active.svg" id="meditate-icon-active" class="meditateBtnClassTwo hidden">
+            <br>Meditate</button>
+            <button class="category-button" id="exerciseBtn" name="category-selection" alt="exercise button">
+              <img src="icons/exercise.svg" id="exercise-icon-inactive" class="exerciseBtnClassOne">
+              <img src="icons/exercise-active.svg" id="exercise-icon-active" class="exerciseBtnClassTwo hidden">
+            <br>Exercise</button>
           </div>
           <h3>What would you like to accomplish during this time?</h3>
-            <input class="task-input" type="number" name="goal" value="">
-          <h3>Minutes</h3>
-            <input class="minute-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="minutes" value="">
-          <h3>Seconds</h3>
-            <input class="second-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="seconds" value="">
-          <button type="button" name="go-button" class="go-button">Start Activity</button>
+          <input class="task-input" type="text" name="goal" value="">
+          <div class="inputs">
+            <div class="time-input">
+              <h3>Minutes</h3>
+              <input class="minute-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="minutes" value="">
+            </div>
+            <div class="time-input">
+              <h3>Seconds</h3>
+              <input class="second-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="seconds" value="">
+            </div>
+          </div>
+          <button type="button" name="go-button" class="go-button">START ACTIVITY</button>
         </form>
       </section>
-      <!-- <section class="current-activity-form hidden">
-        <h2>Current Activity</h2>
-        <h3>Deep Breathing</h3>
-      </section> -->
       <aside class="aside">
         <h2>Past Activities</h2>
         <p>You haven't logged any activities yet.<br>Complete the form to the left to get started!</p>
