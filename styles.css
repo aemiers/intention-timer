@@ -41,8 +41,8 @@ section {
 
 aside {
   border-left: 3px solid #46424D;
-  padding-left: 30%;
-  width: 10%;
+  padding-left: 30;
+  width: 30%;
 }
 
 form {
@@ -71,6 +71,7 @@ button {
   border-radius: 5px;
   height: 80%;
   width: 25%;
+  outline: none;
 }
 
 .main {
@@ -121,17 +122,17 @@ p {
   float: right;
 }
 
-/* #studyBtn:active {
+.studyBtnActive {
   border-color: #B3FD78;
   color: #B3FD78;
-} */
+}
 
-#meditateBtn:active {
+.meditateBtnActive {
   border-color: #C278FD;
   color: #C278FD;
 }
 
-#exerciseBtn:active {
+.exerciseBtnActive {
   border-color: #FD8078;
   color: #FD8078;
 }
