@@ -16,19 +16,22 @@
         <h2>New Activity</h2>
         <form>
           <h3>Select a category:</h3>
-          <div class="button-container">
-            <button class="category-button" id="studyBtn" name="category-selection" alt="study button">
-              <img src="icons/study.svg" id="study-icon-inactive" class="studyBtnClassOne">
-              <img src="icons/study-active.svg" id="study-icon-active" class="studyBtnClassTwo hidden">
-            <br>Study</button>
-            <button class="category-button" id="meditateBtn" name="category-selection" alt="meditate button">
-              <img src="icons/meditate.svg" id="meditate-icon-inactive" class="meditateBtnClassOne">
-              <img src="icons/meditate-active.svg" id="meditate-icon-active" class="meditateBtnClassTwo hidden">
-            <br>Meditate</button>
-            <button class="category-button" id="exerciseBtn" name="category-selection" alt="exercise button">
-              <img src="icons/exercise.svg" id="exercise-icon-inactive" class="exerciseBtnClassOne">
-              <img src="icons/exercise-active.svg" id="exercise-icon-active" class="exerciseBtnClassTwo hidden">
-            <br>Exercise</button>
+          <div class="button-container" data-toggle="buttons">
+            <input class="category-button" type="radio" id="studyBtn" name="category-selection" alt="study button" value="study">
+              <label for="studyBtn">Study
+                <img src="icons/study.svg" id="study-icon-inactive" class="studyBtnClassOne">
+                <img src="icons/study-active.svg" id="study-icon-active" class="studyBtnClassTwo hidden">
+              </label>
+            <input class="category-button" type="radio" id="meditateBtn" name="category-selection" alt="meditate button" value="meditate">
+              <label for="meditateBtn">Meditate
+                <img src="icons/meditate.svg" id="meditate-icon-inactive" class="meditateBtnClassOne">
+                <img src="icons/meditate-active.svg" id="meditate-icon-active" class="meditateBtnClassTwo hidden">
+              </label>
+            <input class="category-button" type="radio" id="exerciseBtn" name="category-selection" alt="exercise button" value="exercise">
+              <label for="exerciseBtn">Exercise
+                <img src="icons/exercise.svg" id="exercise-icon-inactive" class="exerciseBtnClassOne">
+                <img src="icons/exercise-active.svg" id="exercise-icon-active" class="exerciseBtnClassTwo hidden">
+              </label>
           </div>
           <h3>What would you like to accomplish during this time?</h3>
           <input class="task-input" type="text" name="goal" value="">

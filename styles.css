@@ -64,6 +64,16 @@ input {
 .time-input {
   width: 40%;
 }
+label {
+background-color: #46424D;
+border-radius: 5px;
+width: 100%;
+flex-direction: column-reverse;
+display: flex;
+border: 1px solid white;
+justify-content: center;
+align-items: center;
+}
 
 button {
   background-color: #46424D;
@@ -122,7 +132,7 @@ p {
   float: right;
 }
 
-.studyBtnActive {
+/* .studyBtnActive {
   border-color: #B3FD78;
   color: #B3FD78;
 }
@@ -133,6 +143,27 @@ p {
 }
 
 .exerciseBtnActive {
+  border-color: #FD8078;
+  color: #FD8078;
+} */
+#studyBtn{
+  display: none;
+}
+#studyBtn:checked + label {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+#meditateBtn{
+  display: none;
+}
+#meditateBtn:checked + label {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+#exerciseBtn{
+  display: none;
+}
+#exerciseBtn:checked + label {
   border-color: #FD8078;
   color: #FD8078;
 }

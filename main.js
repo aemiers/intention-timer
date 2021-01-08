@@ -38,6 +38,21 @@ exerciseBtn.addEventListener('click', function(event) {
 startActivityBtn.addEventListener('click', startActivity);
 startTimerBtn.addEventListener('click', startTimer);
 
+
+// studyBtn.addEventListener('click', function(event) {
+//   changeStudyColor('studyBtn', 'studyBtnActive', studyIconInactive, studyIconActive);
+// })
+//
+// function changeStudyColor(buttonId, classListActive, inactive, active) {
+//   event.preventDefault(event);
+//   if (event.target.id === buttonId) {
+//     event.target.classList.add(classListActive);
+//     toggleHidden(inactive, active);
+//   }
+// }
+
+
+
 // // //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
 var currentActivity;
 var pastActivity;
