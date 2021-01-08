@@ -1,7 +1,7 @@
 //  ~~~~~~~~~~~~~~~~~ QUERY SELECTORS ~~~~~~~~~~~~~~~~~
-var studyBtn = document.querySelector('#studyBtn');
-var meditateBtn = document.querySelector('#meditateBtn');
-var exerciseBtn = document.querySelector('#exerciseBtn');
+var studyBtn = document.querySelector('#study');
+var meditateBtn = document.querySelector('#meditate');
+var exerciseBtn = document.querySelector('#exercise');
 
 var studyIconInactive = document.querySelector("#study-icon-inactive");
 var meditateIconInactive = document.querySelector("#meditate-icon-inactive");
@@ -73,25 +73,25 @@ function removeHidden(element) {
 
 function changeStudyColor() {
   event.preventDefault(event);
-  if (event.target.id === "studyBtn") {
-    event.target.classList.add("studyBtnActive");
-    toggleHidden(studyIconInactive, studyIconActive);
+  if (event.target.id === "study") {
+    addHidden(studyIconInactive);
+    removeHidden(studyIconActive);
   }
 }
 
 function changeMeditateColor() {
   event.preventDefault(event);
-  if (event.target.id === "meditateBtn") {
-    event.target.classList.add("meditateBtnActive");
-    toggleHidden(meditateIconInactive, meditateIconActive);
+  if (event.target.id === "meditate") {
+    addHidden(meditateIconInactive);
+    removeHidden(meditateIconActive);
   }
 }
 
 function changeExerciseColor() {
   event.preventDefault(event);
-  if (event.target.id === "exerciseBtn") {
-    event.target.classList.add("exerciseBtnActive");
-    toggleHidden(exerciseIconInactive, exerciseIconActive);
+  if (event.target.id === "exercise") {
+    addHidden(exerciseIconInactive);
+    removeHidden(exerciseIconActive);
   }
 }
 
@@ -126,8 +126,12 @@ function startActivity() {
 }
 
 function showTimer() {
-  // var minutes = parseInt(minuteInput.value) < 10 ? "0" + minutes : minutes;
-  // var seconds = parseInt(secondInput.value) < 10 ? "0" + seconds : seconds;
+  if (minuteInput.value < 10) {
+    minuteInput.value = `0${minuteInput.value}`
+  }
+  if (secondInput.value < 10) {
+    secondInput.value = `0${secondInput.value}`
+  }
   timerDisplay.innerHTML = `<span id="time">${minuteInput.value}:${secondInput.value}</span><br />`;
 }
 
@@ -140,7 +144,7 @@ function timer(newTime, display) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ":" + seconds;
         if (--timer < 0) {
-            timer = duration;
+            timer = 0;
         }
     }, 1000);
 }

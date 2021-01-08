@@ -29,6 +29,7 @@ header {
 }
 
 main {
+  width: 100%;
   height: 100%;
   display: flex;
   position: fixed;
@@ -64,10 +65,11 @@ input {
 .time-input {
   width: 40%;
 }
+
 label {
 background-color: #46424D;
-border-radius: 5px;
-width: 100%;
+border-radius: 3px;
+width: 24%;
 flex-direction: column-reverse;
 display: flex;
 border: 1px solid white;
@@ -132,7 +134,7 @@ p {
   float: right;
 }
 
-/* .studyBtnActive {
+ /* .studyBtnActive {
   border-color: #B3FD78;
   color: #B3FD78;
 }
@@ -146,24 +148,24 @@ p {
   border-color: #FD8078;
   color: #FD8078;
 } */
-#studyBtn{
+/* #study{
   display: none;
-}
-#studyBtn:checked + label {
+} */
+#study:checked + label {
   border-color: #B3FD78;
   color: #B3FD78;
 }
-#meditateBtn{
+/* #meditate{
   display: none;
-}
-#meditateBtn:checked + label {
+} */
+#meditate:checked + label {
   border-color: #C278FD;
   color: #C278FD;
 }
-#exerciseBtn{
+/* #exercise{
   display: none;
-}
-#exerciseBtn:checked + label {
+} */
+#exercise:checked + label {
   border-color: #FD8078;
   color: #FD8078;
 }
@@ -185,7 +187,10 @@ img {
 }
 
 /* CURRENT ACTIVITY FORM */
-.current-activity-form {
+
+.timer-style {
+  align-items: center;
+  flex-direction: column;
   display: flex;
   justify-content: center;
 }
