@@ -2,6 +2,15 @@
 var studyBtn = document.querySelector('#studyBtn');
 var meditateBtn = document.querySelector('#meditateBtn');
 var exerciseBtn = document.querySelector('#exerciseBtn');
+
+var studyIconInactive = document.querySelector("#study-icon-inactive");
+var meditateIconInactive = document.querySelector("#meditate-icon-inactive");
+var exerciseIconInactive = document.querySelector("#exercise-icon-inactive");
+
+var studyIconActive = document.querySelector("#study-icon-active");
+var meditateIconActive = document.querySelector("#meditate-icon-active");
+var exerciseIconActive = document.querySelector("#exercise-icon-active");
+
 var taskInput = document.querySelector('.task-input');
 var minuteInput = document.querySelector('.minute-input');
 var secondInput = document.querySelector('.second-input');
@@ -33,57 +42,45 @@ startTimerBtn.addEventListener('click', startTimer);
 var currentActivity;
 var pastActivity;
 
-// // //  ~~~~~~~~~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~~~~~~~
-// // function toggleHidden(elementOne, elementTwo) {
-// //  elementOne.classList.add('hidden');
-// //  elementTwo.classList.remove('hidden');
-// // }
-// //
-// // function addHidden(className) {
-// //   document.querySelector(className).classList.add("hidden");
-// // }
-// //
-// // function removeHidden(className) {
-// //   document.querySelector(className).classList.remove("hidden");
-// // }
-// //
-// // function changeStudyColor() {
-// //   event.preventDefault(event);
-// //   if (event.target.id === "studyBtn") {
-// //     event.target.classList.add("studyBtnActive");
-// //     addHidden(".studyBtnClassOne");
-// //     removeHidden(".studyBtnClassTwo");
-// //     // currentActivity.category = 'study';
-// //   }
-// // }
-// //
-// // function changeMeditateColor() {
-// //   event.preventDefault(event);
-// //   if (event.target.id === "meditateBtn") {
-// //     event.target.classList.add("meditateBtnActive");
-// //     addHidden(".meditateBtnClassOne");
-// //     removeHidden(".meditateBtnClassTwo");
-// //     currentActivity.category = 'meditate';
-// //   }
-// // }
-// //
-// // function changeExerciseColor() {
-// //   event.preventDefault(event);
-// //   if (event.target.id === "exerciseBtn") {
-// //     event.target.classList.add("exerciseBtnActive");
-// //     addHidden(".exerciseBtnClassOne");
-// //     removeHidden(".exerciseBtnClassTwo");
-// //     currentActivity.category = 'exercise';
-// //   }
-// // }
-//
 //  ~~~~~~~~~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~~~~~~~
+function toggleHidden(elementOne, elementTwo) {
+ elementOne.classList.toggle('hidden');
+ elementTwo.classList.toggle('hidden');
+}
+
 function addHidden(element) {
   element.classList.add("hidden");
 }
 
 function removeHidden(element) {
   element.classList.remove("hidden");
+}
+
+function changeStudyColor() {
+  event.preventDefault(event);
+  if (event.target.id === "studyBtn") {
+    event.target.classList.add("studyBtnActive");
+    toggleHidden(studyIconInactive, studyIconActive);
+    // currentActivity.category = 'study';
+  }
+}
+
+function changeMeditateColor() {
+  event.preventDefault(event);
+  if (event.target.id === "meditateBtn") {
+    event.target.classList.add("meditateBtnActive");
+    toggleHidden(meditateIconInactive, meditateIconActive);
+    // currentActivity.category = 'meditate';
+  }
+}
+
+function changeExerciseColor() {
+  event.preventDefault(event);
+  if (event.target.id === "exerciseBtn") {
+    event.target.classList.add("exerciseBtnActive");
+    toggleHidden(exerciseIconInactive, exerciseIconActive);
+    // currentActivity.category = 'exercise';
+  }
 }
 
 function timerColorizer() {
@@ -99,7 +96,7 @@ function timerColorizer() {
 }
 
 function createNewActivity() {
-  category =
+  category = ""
   description = taskInput.value;
   minutes = minuteInput.value;
   seconds = secondInput.value;
