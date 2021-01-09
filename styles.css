@@ -59,7 +59,7 @@ input {
   background: #46424D;
   border: transparent;
   border-bottom: 2px solid white;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 .time-input {
@@ -110,6 +110,12 @@ h3 {
   font-size: 1em;
 }
 
+h4 {
+  font-size: 5.5em;
+  margin: 0;
+  font-weight: 900;
+}
+
 p {
   text-align: center;
   line-height: 1.7;
@@ -118,7 +124,7 @@ p {
 
 /* FORM SECTION */
 .button-container {
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -187,6 +193,29 @@ img {
   width: 26%;
 }
 
+/* ERRORS */
+.error {
+  text-align: left;
+  margin-top: 2%;
+}
+
+#category-error,
+#description-error {
+  width: 100%;
+}
+
+#category-error {
+  margin-bottom: 30px;
+}
+
+#description-error {
+  margin-bottom: 20px;
+}
+
+#seconds-error {
+  margin-bottom: 40px;
+}
+
 /* CURRENT ACTIVITY FORM */
 
 .timer-style {
@@ -196,8 +225,14 @@ img {
   justify-content: center;
 }
 
-#time {
-  font-size: 100px;
+.new-task-input {
+  font-size: 2em;
+  margin: 0;
+}
+
+.log-activity {
+  margin-top: 5%;
+  width: 35%;
 }
 
 .study {
@@ -229,4 +264,8 @@ img {
 
 .hidden {
   display: none !important;
+}
+
+.hide {
+  visibility:hidden;
 }
