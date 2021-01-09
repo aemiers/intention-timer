@@ -1,7 +1,9 @@
 //  ~~~~~~~~~~~~~~~~~ QUERY SELECTORS ~~~~~~~~~~~~~~~~~
-var studyBtn = document.querySelector('#studyBtn');
-var meditateBtn = document.querySelector('#meditateBtn');
-var exerciseBtn = document.querySelector('#exerciseBtn');
+var studyBtn = document.querySelector('#study');
+var meditateBtn = document.querySelector('#meditate');
+var exerciseBtn = document.querySelector('#exercise');
+var toggleButtonContainer = document.querySelector('.button-container')
+
 
 var studyIconInactive = document.querySelector("#study-icon-inactive");
 var meditateIconInactive = document.querySelector("#meditate-icon-inactive");
@@ -26,7 +28,7 @@ var startTimerBtn = document.querySelector('.start-button');
 
 // //  ~~~~~~~~~~~~~~~~~ EVENT LISTENERS ~~~~~~~~~~~~~~~~~
 
-studyBtn.addEventListener('click', function(event) {
+toggleButtonContainer.addEventListener('click', function(event) {
   changeStudyColor();
 })
 meditateBtn.addEventListener('click', function(event) {
@@ -37,6 +39,21 @@ exerciseBtn.addEventListener('click', function(event) {
 })
 startActivityBtn.addEventListener('click', startActivity);
 startTimerBtn.addEventListener('click', startTimer);
+
+
+// studyBtn.addEventListener('click', function(event) {
+//   changeStudyColor('studyBtn', 'studyBtnActive', studyIconInactive, studyIconActive);
+// })
+//
+// function changeStudyColor(buttonId, classListActive, inactive, active) {
+//   event.preventDefault(event);
+//   if (event.target.id === buttonId) {
+//     event.target.classList.add(classListActive);
+//     toggleHidden(inactive, active);
+//   }
+// }
+
+
 
 // // //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
 var currentActivity;
@@ -56,29 +73,33 @@ function removeHidden(element) {
   element.classList.remove("hidden");
 }
 
-function changeStudyColor() {
-  event.preventDefault(event);
-  if (event.target.id === "studyBtn") {
-    event.target.classList.add("studyBtnActive");
-    toggleHidden(studyIconInactive, studyIconActive);
-  }
+  function changeStudyColor() {
+    if (studyBtn.checked) {
+      addHidden(studyIconInactive);
+      removeHidden(studyIconActive);
+    } else if (!studyBtn.checked) {
+      removeHidden(studyIconInactive);
+      addHidden(studyIconActive);
+    } else if (meditateBtn.checked) {
+      addHidden(meditateIconInactive);
+      removeHidden(meditateIconActive);
+    } else if (!meditateBtn.checked) {
+      removeHidden(meditateIconInactive);
+      addHidden(meditateIconActive);
+    }
+
 }
 
-function changeMeditateColor() {
-  event.preventDefault(event);
-  if (event.target.id === "meditateBtn") {
-    event.target.classList.add("meditateBtnActive");
-    toggleHidden(meditateIconInactive, meditateIconActive);
-  }
-}
+// function changeMeditateColor() {
+//     addHidden(meditateIconInactive);
+//     removeHidden(meditateIconActive);
+//   }
+//
+// function changeExerciseColor() {
+//     addHidden(exerciseIconInactive);
+//     removeHidden(exerciseIconActive);
+//   }
 
-function changeExerciseColor() {
-  event.preventDefault(event);
-  if (event.target.id === "exerciseBtn") {
-    event.target.classList.add("exerciseBtnActive");
-    toggleHidden(exerciseIconInactive, exerciseIconActive);
-  }
-}
 
 function timerColorizer() {
   if (studyBtn.classList.contains('studyBtnActive')){
@@ -111,8 +132,12 @@ function startActivity() {
 }
 
 function showTimer() {
-  // var minutes = parseInt(minuteInput.value) < 10 ? "0" + minutes : minutes;
-  // var seconds = parseInt(secondInput.value) < 10 ? "0" + seconds : seconds;
+  if (minuteInput.value < 10) {
+    minuteInput.value = `0${minuteInput.value}`
+  }
+  if (secondInput.value < 10) {
+    secondInput.value = `0${secondInput.value}`
+  }
   timerDisplay.innerHTML = `<span id="time">${minuteInput.value}:${secondInput.value}</span><br />`;
 }
 
@@ -125,7 +150,7 @@ function timer(newTime, display) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ":" + seconds;
         if (--timer < 0) {
-            timer = duration;
+            timer = 0;
         }
     }, 1000);
 }
@@ -135,4 +160,5 @@ function startTimer() {
     var newTime = (60 * parseInt(minuteInput.value)) + parseInt(secondInput.value);
         display = document.querySelector('#time');
     timer(newTime, display);
+    startTimerBtn.classList.add('disabled')
 };

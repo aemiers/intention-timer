@@ -16,30 +16,33 @@
         <h2>New Activity</h2>
         <form>
           <h3>Select a category:</h3>
-          <div class="button-container">
-            <button class="category-button" id="studyBtn" name="category-selection" alt="study button">
-              <img src="icons/study.svg" id="study-icon-inactive" class="studyBtnClassOne">
-              <img src="icons/study-active.svg" id="study-icon-active" class="studyBtnClassTwo hidden">
-            <br>Study</button>
-            <button class="category-button" id="meditateBtn" name="category-selection" alt="meditate button">
-              <img src="icons/meditate.svg" id="meditate-icon-inactive" class="meditateBtnClassOne">
-              <img src="icons/meditate-active.svg" id="meditate-icon-active" class="meditateBtnClassTwo hidden">
-            <br>Meditate</button>
-            <button class="category-button" id="exerciseBtn" name="category-selection" alt="exercise button">
-              <img src="icons/exercise.svg" id="exercise-icon-inactive" class="exerciseBtnClassOne">
-              <img src="icons/exercise-active.svg" id="exercise-icon-active" class="exerciseBtnClassTwo hidden">
-            <br>Exercise</button>
+          <div class="button-container" data-toggle="buttons">
+            <input class="category-button" type="radio" id="study" name="category-selection" value="studies">
+              <label for="study">Study
+                <img src="icons/study.svg" id="study-icon-inactive" class="studyBtnClassOne" alt="study button">
+                <img src="icons/study-active.svg" id="study-icon-active" class="studyBtnClassTwo hidden">
+              </label>
+            <input class="category-button" type="radio" id="meditate" name="category-selection" value="meditate">
+              <label for="meditate">Meditate
+                <img src="icons/meditate.svg" id="meditate-icon-inactive" class="meditateBtnClassOne" alt="meditate button">
+                <img src="icons/meditate-active.svg" id="meditate-icon-active" class="meditateBtnClassTwo hidden">
+              </label>
+            <input class="category-button" type="radio" id="exercise" name="category-selection" value="exercise">
+              <label for="exercise">Exercise
+                <img src="icons/exercise.svg" id="exercise-icon-inactive" class="exerciseBtnClassOne" alt="exercise button">
+                <img src="icons/exercise-active.svg" id="exercise-icon-active" class="exerciseBtnClassTwo hidden">
+              </label>
           </div>
           <h3>What would you like to accomplish during this time?</h3>
           <input class="task-input" type="text" name="goal" value="">
           <div class="inputs">
             <div class="time-input">
               <h3>Minutes</h3>
-              <input class="minute-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="minutes" value="">
+              <input class="minute-input inputs" type="number" min="0" onkeydown="return event.keyCode !== 69" name="minutes" value="">
             </div>
             <div class="time-input">
               <h3>Seconds</h3>
-              <input class="second-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="seconds" value="">
+              <input class="second-input inputs" type="number" min="0" max="59" onkeydown="return event.keyCode !== 69" name="seconds" value="">
             </div>
           </div>
           <button type="button" name="go-button" class="go-button">START ACTIVITY</button>
@@ -48,7 +51,7 @@
 
       <section class="current-activity-form hidden">
         <h2>Current Activity</h2>
-        <form>
+        <form class="timer-style">
           <h3 class="new-task-input"></h3>
           <span id="time"></span><br />
           <button class="start-button">START</button>
