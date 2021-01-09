@@ -18,7 +18,7 @@ var minuteInput = document.querySelector('.minute-input');
 var secondInput = document.querySelector('.second-input');
 var startActivityBtn = document.querySelector('.go-button');
 var form = document.querySelector('.activity-form');
-var currentActivity = document.querySelector('.current-activity-form');
+var currentActivityForm = document.querySelector('.current-activity-form');
 var taskInput = document.querySelector('.task-input');
 var newActivityInput = document.querySelector('.new-task-input');
 var minuteDisplay = document.querySelector('.min-display');
@@ -46,7 +46,7 @@ for (var i = 0; i < numberInputs.length; i++) {
 }
 // numberInputs.addEventListener('keydown', preventKeys);
 // // //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
-var currentActivity = new Activity();
+var currentActivity;
 var pastActivity;
 
 //  ~~~~~~~~~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~~~~~~~
@@ -111,13 +111,23 @@ function preventKeys() {
   }
 }
 
+function findCategory() {
+  var categoryName = ''
+  for (var i = 0; i < toggleButtonContainer.children.length; i++) {
+    if (toggleButtonContainer.children[i].checked === true) {
+      categoryName = toggleButtonContainer.children[i].value;
+    }
+  }
+  return categoryName;
+}
+
 function createNewActivity() {
-  category = toggleButtonContainer.children[i].checked;
+  category = findCategory();
   description = taskInput.value;
   minutes = minuteInput.value;
   seconds = secondInput.value;
   completed = false;
-  activity = new Activity(category, description, minutes, seconds, completed);
+  currentActivity = new Activity(category, description, minutes, seconds, completed);
 }
 
 function displayCategoryError() {
@@ -149,11 +159,11 @@ function allErrors() {
 
 function startActivity() {
   allErrors();
-  if(displayCategoryError() === true && displayDescriptionError() === true && displayMinuteError() === true && displaySecondsError() === true) {
+  if(displayCategoryError() === true && displayError(taskInput, descriptionError) === true && displayError(minuteInput, minutesError) === true && displayError(secondInput, secondsError) === true) {
     newActivityInput.innerText = taskInput.value;
     createNewActivity();
     addHidden(form);
-    removeHidden(currentActivity);
+    removeHidden(currentActivityForm);
     showTimer();
     timerColorizer();
     console.log(currentActivity)
