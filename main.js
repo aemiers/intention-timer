@@ -23,13 +23,16 @@ var taskInput = document.querySelector('.task-input');
 var newActivityInput = document.querySelector('.new-task-input');
 var minuteDisplay = document.querySelector('.min-display');
 var secondDisplay = document.querySelector('.sec-display');
-var timerDisplay = document.querySelector('span');
+var timerDisplay = document.querySelector('h4');
 var startTimerBtn = document.querySelector('.start-button');
+var numberInputs = document.querySelectorAll('input[type=number]');
+
+// var timeInputs = document.querySelector('input')
 
 // //  ~~~~~~~~~~~~~~~~~ EVENT LISTENERS ~~~~~~~~~~~~~~~~~
 
 toggleButtonContainer.addEventListener('click', function(event) {
-  changeStudyColor();
+  changeIconColors();
 })
 meditateBtn.addEventListener('click', function(event) {
   changeMeditateColor();
@@ -40,6 +43,10 @@ exerciseBtn.addEventListener('click', function(event) {
 startActivityBtn.addEventListener('click', startActivity);
 startTimerBtn.addEventListener('click', startTimer);
 
+for (var i = 0; i < numberInputs.length; i++) {
+  numberInputs[i].addEventListener('keydown', preventKeys);
+}
+// numberInputs.addEventListener('keydown', preventKeys);
 
 // studyBtn.addEventListener('click', function(event) {
 //   changeStudyColor('studyBtn', 'studyBtnActive', studyIconInactive, studyIconActive);
@@ -73,43 +80,32 @@ function removeHidden(element) {
   element.classList.remove("hidden");
 }
 
-  function changeStudyColor() {
-    if (studyBtn.checked) {
-      addHidden(studyIconInactive);
-      removeHidden(studyIconActive);
-    } else if (!studyBtn.checked) {
-      removeHidden(studyIconInactive);
-      addHidden(studyIconActive);
-    } else if (meditateBtn.checked) {
-      addHidden(meditateIconInactive);
-      removeHidden(meditateIconActive);
-    } else if (!meditateBtn.checked) {
-      removeHidden(meditateIconInactive);
-      addHidden(meditateIconActive);
-    }
-
+function iconDisplayHandler(iconOneA, iconTwoA, iconThreeA, iconOneB, iconTwoB, iconThreeB) {
+  addHidden(iconOneA);
+  addHidden(iconTwoA);
+  addHidden(iconThreeA);
+  removeHidden(iconOneB);
+  removeHidden(iconTwoB);
+  removeHidden(iconThreeB);
 }
 
-// function changeMeditateColor() {
-//     addHidden(meditateIconInactive);
-//     removeHidden(meditateIconActive);
-//   }
-//
-// function changeExerciseColor() {
-//     addHidden(exerciseIconInactive);
-//     removeHidden(exerciseIconActive);
-//   }
-
+  function changeIconColors() {
+    if (studyBtn.checked) {
+      iconDisplayHandler(studyIconInactive, meditateIconActive, exerciseIconActive, studyIconActive, meditateIconInactive, exerciseIconInactive);
+    } else if (meditateBtn.checked) {
+      iconDisplayHandler(studyIconActive, meditateIconInactive, exerciseIconActive, studyIconInactive, meditateIconActive, exerciseIconInactive);
+    } else if (exerciseBtn.checked) {
+      iconDisplayHandler(studyIconActive, meditateIconActive, exerciseIconInactive, studyIconInactive, meditateIconInactive, exerciseIconActive);
+    }
+}
 
 function timerColorizer() {
-  if (studyBtn.classList.contains('studyBtnActive')){
+  if (studyBtn.checked){
     startTimerBtn.classList.add('study');
-  } else if (meditateBtn.classList.contains('meditateBtnActive')) {
+  } else if (meditateBtn.checked) {
      startTimerBtn.classList.add('meditate');
-  } else if (exerciseBtn.classList.contains('exerciseBtnActive')){
+  } else if (exerciseBtn.checked){
      startTimerBtn.classList.add('exercise');
-  } else {
-    displayError();
   }
 }
 
@@ -129,6 +125,19 @@ function startActivity() {
   removeHidden(currentActivity);
   showTimer();
   timerColorizer();
+}
+
+function preventKeys() {
+  console.log('it works')
+  var invalidChars = ["-", "+", "e"];
+  for (var i = 0; i < numberInputs.length; i++) {
+    numberInputs[i].addEventListener("keypress", function(e) {
+      if (invalidChars.includes(e.key)) {
+        e.preventDefault();
+      }
+    });
+  }
+
 }
 
 function showTimer() {
