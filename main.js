@@ -137,17 +137,16 @@ function preventKeys() {
       }
     });
   }
-
 }
 
 function showTimer() {
-  if (minuteInput.value < 10) {
+  if (minuteInput.value < 10 && minuteInput.value.length === 1) {
     minuteInput.value = `0${minuteInput.value}`
   }
-  if (secondInput.value < 10) {
+  if (secondInput.value < 10 && secondInput.value.length === 1) {
     secondInput.value = `0${secondInput.value}`
   }
-  timerDisplay.innerHTML = `<span id="time">${minuteInput.value}:${secondInput.value}</span><br />`;
+  timerDisplay.innerText = `${minuteInput.value}:${secondInput.value}`;
 }
 
 function timer(newTime, display) {

@@ -111,7 +111,9 @@ h3 {
 }
 
 h4 {
-  font-size: 3em;
+  font-size: 5.5em;
+  margin: 0;
+  font-weight: 900;
 }
 
 p {
@@ -198,10 +200,6 @@ img {
   flex-direction: column;
   display: flex;
   justify-content: center;
-}
-
-#time {
-  font-size: 100px;
 }
 
 .study {
