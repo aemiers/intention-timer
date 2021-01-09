@@ -38,11 +38,11 @@
           <div class="inputs">
             <div class="time-input">
               <h3>Minutes</h3>
-              <input class="minute-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="minutes" value="">
+              <input class="minute-input inputs" type="number" min="0" onkeydown="return event.keyCode !== 69" name="minutes" value="">
             </div>
             <div class="time-input">
               <h3>Seconds</h3>
-              <input class="second-input inputs" type="number" onkeydown="return event.keyCode !== 69" name="seconds" value="">
+              <input class="second-input inputs" type="number" min="0" max="59" onkeydown="return event.keyCode !== 69" name="seconds" value="">
             </div>
           </div>
           <button type="button" name="go-button" class="go-button">START ACTIVITY</button>
