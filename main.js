@@ -4,23 +4,23 @@ var meditateBtn = document.querySelector('#meditate');
 var exerciseBtn = document.querySelector('#exercise');
 var toggleButtonContainer = document.querySelector('.button-container')
 
+var studyIconInactive = document.querySelector('#study-icon-inactive');
+var meditateIconInactive = document.querySelector('#meditate-icon-inactive');
+var exerciseIconInactive = document.querySelector('#exercise-icon-inactive');
 
-var studyIconInactive = document.querySelector("#study-icon-inactive");
-var meditateIconInactive = document.querySelector("#meditate-icon-inactive");
-var exerciseIconInactive = document.querySelector("#exercise-icon-inactive");
-
-var studyIconActive = document.querySelector("#study-icon-active");
-var meditateIconActive = document.querySelector("#meditate-icon-active");
-var exerciseIconActive = document.querySelector("#exercise-icon-active");
-
+var studyIconActive = document.querySelector('#study-icon-active');
+var meditateIconActive = document.querySelector('#meditate-icon-active');
+var exerciseIconActive = document.querySelector('#exercise-icon-active');
 var taskInput = document.querySelector('.task-input');
 var minuteInput = document.querySelector('.minute-input');
 var secondInput = document.querySelector('.second-input');
+
 var startActivityBtn = document.querySelector('.go-button');
-var form = document.querySelector('.activity-form');
 var currentActivityForm = document.querySelector('.current-activity-form');
+var form = document.querySelector('.activity-form');
 var taskInput = document.querySelector('.task-input');
 var newActivityInput = document.querySelector('.new-task-input');
+
 var minuteDisplay = document.querySelector('.min-display');
 var secondDisplay = document.querySelector('.sec-display');
 var timerDisplay = document.querySelector('h4');
@@ -56,19 +56,19 @@ function toggleHidden(elementOne, elementTwo) {
 }
 
 function addHidden(element) {
-  element.classList.add("hidden");
+  element.classList.add('hidden');
 }
 
 function removeHidden(element) {
-  element.classList.remove("hidden");
+  element.classList.remove('hidden');
 }
 
 function removeHide(element) {
-  element.classList.remove("hide");
+  element.classList.remove('hide');
 }
 
 function addHide(element) {
-  element.classList.add("hide");
+  element.classList.add('hide');
 }
 
 function iconDisplayHandler(iconOneA, iconTwoA, iconThreeA, iconOneB, iconTwoB, iconThreeB) {
@@ -90,44 +90,15 @@ function changeIconColors() {
   }
 }
 
-function timerColorizer() {
-  if (studyBtn.checked){
-    startTimerBtn.classList.add('study');
-  } else if (meditateBtn.checked) {
-     startTimerBtn.classList.add('meditate');
-  } else if (exerciseBtn.checked){
-     startTimerBtn.classList.add('exercise');
-  }
-}
-
 function preventKeys() {
-  var invalidChars = ["-", "+", "e"];
+  var invalidChars = ['-', '+', 'e'];
   for (var i = 0; i < numberInputs.length; i++) {
-    numberInputs[i].addEventListener("keypress", function(event) {
+    numberInputs[i].addEventListener('keypress', function(event) {
       if (invalidChars.includes(event.key)) {
         event.preventDefault();
       }
     });
   }
-}
-
-function findCategory() {
-  var categoryName = ''
-  for (var i = 0; i < toggleButtonContainer.children.length; i++) {
-    if (toggleButtonContainer.children[i].checked === true) {
-      categoryName = toggleButtonContainer.children[i].value;
-    }
-  }
-  return categoryName;
-}
-
-function createNewActivity() {
-  category = findCategory();
-  description = taskInput.value;
-  minutes = minuteInput.value;
-  seconds = secondInput.value;
-  completed = false;
-  currentActivity = new Activity(category, description, minutes, seconds, completed);
 }
 
 function displayCategoryError() {
@@ -166,7 +137,35 @@ function startActivity() {
     removeHidden(currentActivityForm);
     showTimer();
     timerColorizer();
-    console.log(currentActivity)
+  }
+}
+
+function findCategory() {
+  var categoryName = ''
+  for (var i = 0; i < toggleButtonContainer.children.length; i++) {
+    if (toggleButtonContainer.children[i].checked === true) {
+      categoryName = toggleButtonContainer.children[i].value;
+    }
+  }
+  return categoryName;
+}
+
+function createNewActivity() {
+  category = findCategory();
+  description = taskInput.value;
+  minutes = minuteInput.value;
+  seconds = secondInput.value;
+  completed = false;
+  currentActivity = new Activity(category, description, minutes, seconds, completed);
+}
+
+function timerColorizer() {
+  if (studyBtn.checked){
+    startTimerBtn.classList.add('study');
+  } else if (meditateBtn.checked) {
+     startTimerBtn.classList.add('meditate');
+  } else if (exerciseBtn.checked){
+     startTimerBtn.classList.add('exercise');
   }
 }
 
@@ -185,13 +184,18 @@ function timer(newTime, display) {
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent = minutes + ":" + seconds;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        display.textContent = minutes + ':' + seconds;
         if (--timer < 0) {
             timer = 0;
         }
     }, 1000);
+}
+
+function convertToMilliseconds() {
+  var milliseconds = (parseInt(minuteInput.value) * 60000) + (parseInt(secondInput.value) * 1000) + 1000;
+  return milliseconds;
 }
 
 function startTimer() {
@@ -199,8 +203,18 @@ function startTimer() {
     var newTime = (60 * parseInt(minuteInput.value)) + parseInt(secondInput.value);
         display = document.querySelector('#time');
     timer(newTime, display);
-    startTimerBtn.classList.add('disabled')
+    startTimerBtn.classList.add('disabled');
+    setTimeout(displayAlert, convertToMilliseconds())
 };
+
+function displayAlert() {
+  console.log('working')
+  if (timerDisplay.innerText === '00:00') {
+    currentActivity.completed = true;
+    startTimerBtn.innerText = 'COMPLETE'
+    alert('TIME IS UP!')
+  }
+}
 
 function saveUserInput() {
   var stringifiedActivity = JSON.stringify(currentActivity);
