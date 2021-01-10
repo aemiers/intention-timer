@@ -1,5 +1,5 @@
 class Activity {
-  constructor (category, description, minutes, seconds, completed, id){
+  constructor (category, description, minutes, seconds, completed){
     this.category = category;
     this.description = description;
     this.minutes = minutes;

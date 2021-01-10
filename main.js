@@ -3,36 +3,35 @@ var studyBtn = document.querySelector('#study');
 var meditateBtn = document.querySelector('#meditate');
 var exerciseBtn = document.querySelector('#exercise');
 var toggleButtonContainer = document.querySelector('.button-container')
-
 var studyIconInactive = document.querySelector('#study-icon-inactive');
 var meditateIconInactive = document.querySelector('#meditate-icon-inactive');
 var exerciseIconInactive = document.querySelector('#exercise-icon-inactive');
-
 var studyIconActive = document.querySelector('#study-icon-active');
 var meditateIconActive = document.querySelector('#meditate-icon-active');
 var exerciseIconActive = document.querySelector('#exercise-icon-active');
 var taskInput = document.querySelector('.task-input');
 var minuteInput = document.querySelector('.minute-input');
 var secondInput = document.querySelector('.second-input');
-
 var startActivityBtn = document.querySelector('.go-button');
 var currentActivityForm = document.querySelector('.current-activity-form');
 var form = document.querySelector('.activity-form');
 var taskInput = document.querySelector('.task-input');
 var newActivityInput = document.querySelector('.new-task-input');
-
 var minuteDisplay = document.querySelector('.min-display');
 var secondDisplay = document.querySelector('.sec-display');
 var timerDisplay = document.querySelector('h4');
 var startTimerBtn = document.querySelector('.start-button');
 var numberInputs = document.querySelectorAll('input[type=number]');
-
 var categoryError = document.querySelector('#category-error');
 var descriptionError = document.querySelector('#description-error');
 var minutesError = document.querySelector('#minutes-error');
 var secondsError = document.querySelector('#seconds-error');
-
-// //  ~~~~~~~~~~~~~~~~~ EVENT LISTENERS ~~~~~~~~~~~~~~~~~
+var logActivityBtn = document.querySelector('.log-activity')
+var completedActivityFrom = document.querySelector('.completed-activity-form')
+var pastActivityCard = document.querySelector('.past-activities-card');
+var noActivities = document.querySelector('.activities-none');
+var cardTemplate = document.querySelector('#past-activities-template')
+//  ~~~~~~~~~~~~~~~~~ EVENT LISTENERS ~~~~~~~~~~~~~~~~~
 
 toggleButtonContainer.addEventListener('click', function(event) {
   changeIconColors();
@@ -44,8 +43,10 @@ startTimerBtn.addEventListener('click', startTimer);
 for (var i = 0; i < numberInputs.length; i++) {
   numberInputs[i].addEventListener('keydown', preventKeys);
 }
-// numberInputs.addEventListener('keydown', preventKeys);
-// // //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
+
+logActivityBtn.addEventListener('click', logActivity);
+
+//  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
 var currentActivity;
 var pastActivity;
 
@@ -61,14 +62,6 @@ function addHidden(element) {
 
 function removeHidden(element) {
   element.classList.remove('hidden');
-}
-
-function removeHide(element) {
-  element.classList.remove('hide');
-}
-
-function addHide(element) {
-  element.classList.add('hide');
 }
 
 function iconDisplayHandler(iconOneA, iconTwoA, iconThreeA, iconOneB, iconTwoB, iconThreeB) {
@@ -99,6 +92,14 @@ function preventKeys() {
       }
     });
   }
+}
+
+function removeHide(element) {
+  element.classList.remove('hide');
+}
+
+function addHide(element) {
+  element.classList.add('hide');
 }
 
 function displayCategoryError() {
@@ -204,15 +205,15 @@ function startTimer() {
         display = document.querySelector('#time');
     timer(newTime, display);
     startTimerBtn.classList.add('disabled');
-    setTimeout(displayAlert, convertToMilliseconds())
+    var timerInterval = setTimeout(displayAlert, convertToMilliseconds())
+
 };
 
 function displayAlert() {
-  console.log('working')
   if (timerDisplay.innerText === '00:00') {
     currentActivity.completed = true;
-    startTimerBtn.innerText = 'COMPLETE'
-    alert('TIME IS UP!')
+    startTimerBtn.innerText = 'COMPLETE!'
+    removeHide(logActivityBtn);
   }
 }
 
@@ -224,4 +225,26 @@ function saveUserInput() {
 function getCurrentActivityFromStorage() {
   var retrievedObject = localStorage.getItem('savedCurrentActivity');
   var parsedObject = JSON.parse(retrievedObject);
+  return parsedObject;
+}
+
+function logActivity(){
+ event.preventDefault(event);
+ addHidden(currentActivityForm);
+ addHidden(noActivities);
+ removeHidden(completedActivityFrom);
+ displayLoggedActivity(currentActivity);
+}
+
+function displayLoggedActivity(completedActivity) {
+ cardTemplate.innerHTML += `<section class="past-activities-card">
+   <div class="past-activities-all-words">
+     <h5 class="past-activities-card-title">${completedActivity.category}</h3>
+     <h5 class="past-activities-card-min-sec">${completedActivity.minutes} MIN ${completedActivity.seconds} SECONDS</h4>
+     <h5 class="past-activities-card-description">${completedActivity.description}</h4>
+   </div>
+   <div class="past-activities-colorizer-container">
+     <button class="past-activities-colorizer ${completedActivity.category}-past"></button>
+   </div>
+ </section>`;
 }
