@@ -26,15 +26,15 @@ After selecting a category button the user can then fill out all the inputs for 
 
 When all the input fields are filled out and an activity button is selected then the user can proceed to the next page where they will find a timer with the minutes and seconds they input on the previous page. The user's task description appears at the top of the page and a large start button is visible. When the user is ready to begin their timed task they must click the start button and the timer will start counting down. 
 
-<img src=".gif">
+<img src="https://gyazo.com/59db5155f8ec4af4c0201ea29f5fcaf4.gif">
 
 After the time runs out a 'COMPLETE' message will appear and the user is given the option to log the completed activity to the 'Past Activities' card holder on the right side of the screen. 
 
-<img src=".gif">
+<img src="https://gyazo.com/2eaac0a5c1f84edd1f96f21903330a02.gif">
 
 If the user decides to add the completed activity to the logged activities they will be brought to a new page where Carlton dances and congratulates them on their logged activity. At the top of the page the user is given the option to create a new activity and is then brought to the home page to fill out the form again. 
 
-<img src=".gif">
+<img src="https://gyazo.com/3761dace346ae92831f4f716a67bbdf8.gif">
 
 Once the user is back at the home page their completed activities will appear on the right side of the screen. They can continue to fill out the form, complete, and log as many activities as they desire. If the user logs more activities than their screen will display then the user will notice a scrolling functionality only on the 'Past Activities' section. This allows the user to scroll and view all of their previously logged activities/tasks. 
 
