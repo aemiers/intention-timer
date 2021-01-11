@@ -49,9 +49,11 @@ logActivityBtn.addEventListener('click', logActivity);
 
 createANewActivityBtn.addEventListener('click', goHome);
 
+window.addEventListener('load', getPastActivityFromStorage);
+
 //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
 var currentActivity;
-var pastActivity;
+var pastActivity = [];
 
 //  ~~~~~~~~~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~~~~~~~
 function toggleHidden(elementOne, elementTwo) {
@@ -214,21 +216,25 @@ function startTimer() {
 
 function displayAlert() {
   if (timerDisplay.innerText === '00:00') {
-    currentActivity.completed = true;
+    currentActivity.markComplete();
     startTimerBtn.innerText = 'COMPLETE!'
     removeHide(logActivityBtn);
   }
 }
 
-function saveUserInput() {
-  var stringifiedActivity = JSON.stringify(currentActivity);
-  localStorage.setItem('savedCurrentActivity', stringifiedActivity);
+function updatePastActivityArray() {
+  pastActivity.push(currentActivity);
 }
 
-function getCurrentActivityFromStorage() {
-  var retrievedObject = localStorage.getItem('savedCurrentActivity');
-  var parsedObject = JSON.parse(retrievedObject);
-  return parsedObject;
+function getPastActivityFromStorage() {
+  var retrievedArray = localStorage.getItem('savedPastActivity');
+  if (retrievedArray) {
+    var parsedArray = JSON.parse(retrievedArray);
+    pastActivity = parsedArray;
+    for (var i = 0; i < pastActivity.length; i++) {
+      displayLoggedActivity(pastActivity[i])
+    }
+  }
 }
 
 function logActivity(){
@@ -237,11 +243,13 @@ function logActivity(){
  addHidden(noActivities);
  removeHidden(completedActivityFrom);
  displayLoggedActivity(currentActivity);
- //remove disabled from start button on timer
+ updatePastActivityArray();
+ currentActivity.saveUserInput();
 }
 
 function displayLoggedActivity(completedActivity) {
- cardTemplate.innerHTML += `<section class="past-activities-card">
+  addHidden(noActivities)
+  cardTemplate.innerHTML += `<section class="past-activities-card">
    <div class="past-activities-all-words">
      <h5 class="past-activities-card-title capitalize">${completedActivity.category}</h3>
      <h5 class="past-activities-card-min-sec">${completedActivity.minutes} MIN ${completedActivity.seconds} SECONDS</h4>
@@ -254,11 +262,11 @@ function displayLoggedActivity(completedActivity) {
 }
 
 function goHome() {
-  event.preventDefault(event);
-  removeHidden(form);
-  addHidden(completedActivityFrom);
-  addHidden(currentActivityForm);
-
-//
+  // event.preventDefault(event);
+  // location.reload();
+  // getCurrentActivityFromStorage();
+  // removeHidden(form);
+  // addHidden(completedActivityFrom);
+  // addHidden(currentActivityForm);
 
 }
