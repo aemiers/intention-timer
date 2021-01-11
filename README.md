@@ -24,11 +24,11 @@ After selecting a category button the user can then fill out all the inputs for 
 
 <img src="https://gyazo.com/7b312346ab370da8be4540ac65eac14c.gif">
 
-When all the input fields are filled out and an activity button is selected then the user can proceed to the next page where they will find a timer with the minutes and seconds they input on the previous page. The user's task description appears at the top of the page and a large start button is visible. When the user is ready to begin their timed task they must click the start button and the timer will start counting down. 
+When all the input fields are filled out and an activity button is selected then the user can proceed to the next page where they will find a timer with the minutes and seconds they input on the previous page. If any number less than 10 was input into the minutes and seconds field then the timer will automatically add a zero before the number so that the timer stays unified. The user's task description appears at the top of the page and a large start button is visible. When the user is ready to begin their timed task they must click the start button and the timer will start counting down. 
 
 <img src="https://gyazo.com/59db5155f8ec4af4c0201ea29f5fcaf4.gif">
 
-After the time runs out a 'COMPLETE' message will appear and the user is given the option to log the completed activity to the 'Past Activities' card holder on the right side of the screen. 
+After the time runs out a 'COMPLETE' message will appear and the user is given the option to log the completed activity to the 'Past Activities' card holder on the right side of the screen. A colored bar will display on the logged activity card; this color matches the category button color the user selected on the home page. 
 
 <img src="https://gyazo.com/2eaac0a5c1f84edd1f96f21903330a02.gif">
 
@@ -38,7 +38,7 @@ If the user decides to add the completed activity to the logged activities they 
 
 Once the user is back at the home page their completed activities will appear on the right side of the screen. They can continue to fill out the form, complete, and log as many activities as they desire. If the user logs more activities than their screen will display then the user will notice a scrolling functionality only on the 'Past Activities' section. This allows the user to scroll and view all of their previously logged activities/tasks. 
 
-<img src=".gif">
+<img src="https://gyazo.com/edd06c113873db3bc797bef910406afe.gif">
 
 ## Contributors
 * Anneke Miers (https://github.com/aemiers)
