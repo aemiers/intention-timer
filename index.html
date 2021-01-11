@@ -39,12 +39,12 @@
           <div class="inputs">
             <div class="time-input">
               <h3>Minutes</h3>
-              <input class="minute-input inputs" type="number" min="0" onkeydown="return event.keyCode !== 69" name="minutes" value="" maxlength="2">
+              <input class="minute-input inputs" type="number" min="0" onkeydown="return event.keyCode !== 69" name="minutes" value="" onKeyPress="if(this.value.length==2) return false;">
               <p class="error hide" id="minutes-error">⚠️ Minutes required.</p>
             </div>
             <div class="time-input">
               <h3>Seconds</h3>
-              <input class="second-input inputs" type="number" min="0" max="59" onkeydown="return event.keyCode !== 69" name="seconds" value="" maxlength="2">
+              <input class="second-input inputs" type="number" min="0" max="59" onkeydown="return event.keyCode !== 69" name="seconds" value="" onKeyPress="if(this.value.length==2) return false;">
               <p class="error hide" id="seconds-error">⚠️ Seconds required.</p>
             </div>
           </div>
@@ -54,15 +54,37 @@
       <section class="current-activity-form hidden">
         <h2>Current Activity</h2>
         <form class="timer-style">
-          <h3 class="new-task-input"></h3>
+          <h3 class="new-task-input capitalize"></h3>
           <h4 id="time"></h4>
           <button class="start-button">START</button>
-          <button class="go-button log-activity">LOG ACTIVITY</button>
+          <button class="go-button log-activity hide">LOG ACTIVITY</button>
+        </form>
+      </section>
+      <section class="completed-activity-form hidden">
+        <h2>Completed Activity</h2>
+        <form class="timer-style">
+          <button class="go-button create-new-activity">CREATE A NEW ACTIVITY</button>
+          <h3 class="CONGRATULATIONS!">CONGRATULATIONS!</h3>
+          <div class="carlton-div">
+            <img src="https://i.gifer.com/ZIb4.gif" class="carlton" alt="Carlton dancing">
+          </div>
         </form>
       </section>
       <aside class="aside">
         <h2>Past Activities</h2>
-        <p>You haven't logged any activities yet.<br>Complete the form to the left to get started!</p>
+        <p class="activities-none">You haven't logged any activities yet.<br>Complete the form to the left to get started!</p>
+        <article id="past-activities-template">
+          <section class="past-activities-card hidden">
+            <div class="past-activities-all-words">
+              <h5 class="past-activities-card-title">Study</h3>
+              <h5 class="past-activities-card-min-sec">15 MIN</h4>
+              <h5 class="past-activities-card-description">Description Goes Here</h4>
+            </div>
+            <div class="past-activities-colorizer-container">
+              <button class="past-activities-colorizer"></button>
+            </div>
+          </section>
+        </article>
       </aside>
     </main>
   </body>
