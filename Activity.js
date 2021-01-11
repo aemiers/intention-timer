@@ -13,10 +13,11 @@ class Activity {
   }
 
   markComplete(){
-
+    currentActivity.completed = true;
   }
 
-  saveToStorage(){
-
+  saveUserInput() {
+      var stringifiedPastActivity = JSON.stringify(pastActivity);
+      localStorage.setItem('savedPastActivity', stringifiedPastActivity);
   }
 }
