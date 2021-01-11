@@ -31,6 +31,7 @@ var completedActivityFrom = document.querySelector('.completed-activity-form')
 var pastActivityCard = document.querySelector('.past-activities-card');
 var noActivities = document.querySelector('.activities-none');
 var cardTemplate = document.querySelector('#past-activities-template')
+var createANewActivityBtn = document.querySelector('.create-new-activity');
 //  ~~~~~~~~~~~~~~~~~ EVENT LISTENERS ~~~~~~~~~~~~~~~~~
 
 toggleButtonContainer.addEventListener('click', function(event) {
@@ -45,6 +46,8 @@ for (var i = 0; i < numberInputs.length; i++) {
 }
 
 logActivityBtn.addEventListener('click', logActivity);
+
+createANewActivityBtn.addEventListener('click', goHome);
 
 //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
 var currentActivity;
@@ -234,17 +237,28 @@ function logActivity(){
  addHidden(noActivities);
  removeHidden(completedActivityFrom);
  displayLoggedActivity(currentActivity);
+ //remove disabled from start button on timer
 }
 
 function displayLoggedActivity(completedActivity) {
  cardTemplate.innerHTML += `<section class="past-activities-card">
    <div class="past-activities-all-words">
-     <h5 class="past-activities-card-title">${completedActivity.category}</h3>
+     <h5 class="past-activities-card-title capitalize">${completedActivity.category}</h3>
      <h5 class="past-activities-card-min-sec">${completedActivity.minutes} MIN ${completedActivity.seconds} SECONDS</h4>
-     <h5 class="past-activities-card-description">${completedActivity.description}</h4>
+     <h5 class="past-activities-card-description capitalize">${completedActivity.description}</h4>
    </div>
    <div class="past-activities-colorizer-container">
      <button class="past-activities-colorizer ${completedActivity.category}-past"></button>
    </div>
  </section>`;
+}
+
+function goHome() {
+  event.preventDefault(event);
+  removeHidden(form);
+  addHidden(completedActivityFrom);
+  addHidden(currentActivityForm);
+
+//
+
 }

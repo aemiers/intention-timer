@@ -13,6 +13,7 @@ Error: #EFB7EC */
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   color: white;
+  text-shadow: 1px 1px black;
 }
 
 body, html {
@@ -45,6 +46,11 @@ aside {
   border-left: 3px solid #46424D;
   padding-left: 30;
   width: 30%;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 form {
@@ -128,6 +134,10 @@ p {
   margin-top: 35px;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 /* FILLING OUT ACTIVITY FORM SECTION */
 .button-container {
   /* margin-bottom: 10%; */
@@ -144,9 +154,10 @@ p {
   color: #46424D;
   font-weight: normal;
   float: right;
+  text-shadow: none;
 }
 
-.go-button2 {
+.create-new-activity {
   width: 40%;
 }
 
@@ -257,18 +268,24 @@ img {
 
 /* PAST ACTIVITIES TINY CARD */
 .past-activities-card {
-  border-radius: 6px;
+    margin-bottom: 15px;
+    border-radius: 6px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #46424D;
     width: 85%;
+    height: 80px;
 }
 
 .past-activities-card-title {
-  padding-top: 3%;
+  padding-top: 10px;
   margin-bottom: 0;
   font-weight: bolder;
+}
+
+.past-activities-card-min-sec {
+  padding-bottom: 5px;
 }
 
 .past-activities-card-description {
@@ -279,7 +296,7 @@ img {
 .past-activities-colorizer-container {
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 32px;
 }
 
 .past-activities-colorizer {
@@ -303,9 +320,13 @@ img {
 
 /* CARLTON */
 .carlton {
-
+  height: 130%;
 }
 .carlton-div {
+  margin-top: 60px;
+  justify-content: center;
+  width: 100%;
+  align-self: flex-start;
   display: flex;
   flex-direction: row;
 }

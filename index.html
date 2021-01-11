@@ -54,7 +54,7 @@
       <section class="current-activity-form hidden">
         <h2>Current Activity</h2>
         <form class="timer-style">
-          <h3 class="new-task-input"></h3>
+          <h3 class="new-task-input capitalize"></h3>
           <h4 id="time"></h4>
           <button class="start-button">START</button>
           <button class="go-button log-activity hide">LOG ACTIVITY</button>
@@ -63,19 +63,18 @@
       <section class="completed-activity-form hidden">
         <h2>Completed Activity</h2>
         <form class="timer-style">
-          <h3 class="CONGRATULATIONS!"></h3>
-          <button class="go-button">CREATE A NEW ACTIVITY</button>
+          <button class="go-button create-new-activity">CREATE A NEW ACTIVITY</button>
+          <h3 class="CONGRATULATIONS!">CONGRATULATIONS!</h3>
           <div class="carlton-div">
             <img src="https://i.gifer.com/ZIb4.gif" class="carlton" alt="Carlton dancing">
           </div>
         </form>
       </section>
-      <button name="go-button2" class="go-button hidden">CREATE A NEW ACTIVITY</button>
       <aside class="aside">
         <h2>Past Activities</h2>
         <p class="activities-none">You haven't logged any activities yet.<br>Complete the form to the left to get started!</p>
         <article id="past-activities-template">
-          <section class="past-activities-card">
+          <section class="past-activities-card hidden">
             <div class="past-activities-all-words">
               <h5 class="past-activities-card-title">Study</h3>
               <h5 class="past-activities-card-min-sec">15 MIN</h4>
