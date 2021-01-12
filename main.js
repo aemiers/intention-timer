@@ -47,8 +47,6 @@ for (var i = 0; i < numberInputs.length; i++) {
 
 logActivityBtn.addEventListener('click', logActivity);
 
-createANewActivityBtn.addEventListener('click', goHome);
-
 window.addEventListener('load', getPastActivityFromStorage);
 
 //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
@@ -211,7 +209,6 @@ function startTimer() {
     timer(newTime, display);
     startTimerBtn.classList.add('disabled');
     var timerInterval = setTimeout(displayAlert, convertToMilliseconds())
-
 };
 
 function displayAlert() {
@@ -259,14 +256,4 @@ function displayLoggedActivity(completedActivity) {
      <button class="past-activities-colorizer ${completedActivity.category}-past"></button>
    </div>
  </section>`;
-}
-
-function goHome() {
-  // event.preventDefault(event);
-  // location.reload();
-  // getCurrentActivityFromStorage();
-  // removeHidden(form);
-  // addHidden(completedActivityFrom);
-  // addHidden(currentActivityForm);
-
 }
