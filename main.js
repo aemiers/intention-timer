@@ -47,8 +47,6 @@ for (var i = 0; i < numberInputs.length; i++) {
 
 logActivityBtn.addEventListener('click', logActivity);
 
-createANewActivityBtn.addEventListener('click', goHome);
-
 window.addEventListener('load', getPastActivityFromStorage);
 
 //  ~~~~~~~~~~~~~~~~~ GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~
@@ -137,8 +135,8 @@ function allErrors() {
 function startActivity() {
   allErrors();
   if(displayCategoryError() === true && displayError(taskInput, descriptionError) === true && displayError(minuteInput, minutesError) === true && displayError(secondInput, secondsError) === true) {
-    newActivityInput.innerText = taskInput.value;
     createNewActivity();
+    newActivityInput.innerText = taskInput.value;
     addHidden(form);
     removeHidden(currentActivityForm);
     showTimer();
@@ -186,17 +184,17 @@ function showTimer() {
 }
 
 function timer(newTime, display) {
-    var timer = newTime, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        display.textContent = minutes + ':' + seconds;
-        if (--timer < 0) {
-            timer = 0;
-        }
-    }, 1000);
+  var timer = newTime, minutes, seconds;
+  setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      display.textContent = minutes + ':' + seconds;
+      if (--timer < 0) {
+          timer = 0;
+      }
+  }, 1000);
 }
 
 function convertToMilliseconds() {
@@ -211,7 +209,6 @@ function startTimer() {
     timer(newTime, display);
     startTimerBtn.classList.add('disabled');
     var timerInterval = setTimeout(displayAlert, convertToMilliseconds())
-
 };
 
 function displayAlert() {
@@ -259,14 +256,4 @@ function displayLoggedActivity(completedActivity) {
      <button class="past-activities-colorizer ${completedActivity.category}-past"></button>
    </div>
  </section>`;
-}
-
-function goHome() {
-  // event.preventDefault(event);
-  // location.reload();
-  // getCurrentActivityFromStorage();
-  // removeHidden(form);
-  // addHidden(completedActivityFrom);
-  // addHidden(currentActivityForm);
-
 }
