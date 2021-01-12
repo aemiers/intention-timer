@@ -135,8 +135,8 @@ function allErrors() {
 function startActivity() {
   allErrors();
   if(displayCategoryError() === true && displayError(taskInput, descriptionError) === true && displayError(minuteInput, minutesError) === true && displayError(secondInput, secondsError) === true) {
-    newActivityInput.innerText = taskInput.value;
     createNewActivity();
+    newActivityInput.innerText = taskInput.value;
     addHidden(form);
     removeHidden(currentActivityForm);
     showTimer();
@@ -184,17 +184,17 @@ function showTimer() {
 }
 
 function timer(newTime, display) {
-    var timer = newTime, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        display.textContent = minutes + ':' + seconds;
-        if (--timer < 0) {
-            timer = 0;
-        }
-    }, 1000);
+  var timer = newTime, minutes, seconds;
+  setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      display.textContent = minutes + ':' + seconds;
+      if (--timer < 0) {
+          timer = 0;
+      }
+  }, 1000);
 }
 
 function convertToMilliseconds() {
